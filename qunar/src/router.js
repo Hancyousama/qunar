@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-
+import List from '@/pages/list/list.vue'
+import Home from '@/pages/home/home.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -12,6 +12,12 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+      // component: () => import(/* webpackChunkName: "about" */ '@/pages/home/home.vue')
+    },
+    {
+      path: '/list',
+      name: 'list',
+      component: List
     },
     {
       path: '/about',
@@ -21,5 +27,6 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     }
+
   ]
 })
