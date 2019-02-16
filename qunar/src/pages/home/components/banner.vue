@@ -1,22 +1,10 @@
 <template>
-    <div>
+    <div class="wrapper">
     <swiper :options="swiperOption" ref="mySwiper" >
-
-        <!--<swiper-slide>-->
-            <!--<img class="banner-img" src="http://p1.music.126.net/0M36SZ_vzW0XjIXxq4dWKg==/109951163861432962.jpg">-->
-        <!--</swiper-slide>-->
-        <!--<swiper-slide>-->
-            <!--<img class="banner-img" src="http://p1.music.126.net/0-t93UCZotUj6C-liP2Ofw==/109951163862208062.jpg">-->
-        <!--</swiper-slide>-->
-        <!--<swiper-slide>-->
-            <!--<img class="banner-img" src="http://p1.music.126.net/1x7XuuHs2rLlOrxmOA-58g==/109951163861450552.jpg">-->
-        <!--</swiper-slide>-->
         <swiper-slide v-for="item of list" :key="item.id" >
             <img class="banner-img" :src="item.bannerurl">
         </swiper-slide>
         <div class="swiper-pagination"  slot="pagination"></div>
-        <!--<div class="swiper-button-prev" slot="button-prev"></div>-->
-        <!--<div class="swiper-button-next" slot="button-next"></div>-->
     </swiper>
     </div>
 </template>
@@ -28,19 +16,25 @@ export default {
     return {
       swiperOption: {
         pagination: {
-          el: '.swiper-pagination'
+          el: '.swiper-pagination',
+          clickable: true
         },
         autoplay: true,
         loop: true
       },
       list: [{
         id: 'banner-one',
-        bannerurl: 'http://p1.music.126.net/0M36SZ_vzW0XjIXxq4dWKg==/109951163861432962.jpg'
+        bannerurl: 'http://p1.music.126.net/0-t93UCZotUj6C-liP2Ofw==/109951163862208062.jpg'
       }, {
         id: 'banner-two',
-        bannerurl: 'http://p1.music.126.net/0-t93UCZotUj6C-liP2Ofw==/109951163862208062.jpg'
+        bannerurl: 'http://p1.music.126.net/NwnO-SkbG42GC3O9Uj1XHw==/109951163864771970.jpg'
+      }, {
+        id: 'banner-three',
+        bannerurl: 'http://p1.music.126.net/Z5GGj8mohwhaSryK_u8-tA==/109951163861449029.jpg'
+      }, {
+        id: 'banner-four',
+        bannerurl: 'http://p1.music.126.net/1x7XuuHs2rLlOrxmOA-58g==/109951163861450552.jpg'
       }]
-
     }
   },
   computed: {
@@ -59,6 +53,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.banner-img
-    width:100%
+  .wrapper >>>.swiper-pagination-bullet-active
+      background : white
+      opacity : .5
+  .wrapper
+      width : 100%
+      overflow : hidden
+      height : 0
+      padding-bottom :46.02%
+      background : #cacaca
+    .banner-img
+      width:100%
 </style>
