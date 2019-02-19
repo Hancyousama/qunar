@@ -1,5 +1,5 @@
 <template>
-    <div class="icons">
+    <div class="icons border-bottom">
       <swiper>
           <swiper-slide  v-for="(page,index) of pages" :key="index">
              <div class="icon" v-for="item of page" :key="item.id">
@@ -11,26 +11,6 @@
           </swiper-slide >
         </swiper>
      </div>
-        <!--div class="icon">
-            <div  class= "icon-img">
-                <img  class="icon-img-concent" src="../../../img/icons/shortcut_identify.png">
-            <div  class= "icon-img">
-                <img  class="icon-img-concent" src="../../../img/icons/shortcut_identify.png">
-            </div>
-            <p class="icon-des">个性推荐</p>
-        </div>
-        <div class="icon">
-            <div  class= "icon-img">
-                <img  class="icon-img-concent" src="../../../img/icons/shortcut_local_music.png">
-            </div>
-            <p class="icon-des">个性推荐</p>
-        </div>
-        <div class="icon">
-            <div  class= "icon-img">
-                <img  class="icon-img-concent" src="../../../img/icons/shortcut_search.png">
-            </div>
-            <p class="icon-des">个性推荐</p>
-        </div>-->
 </template>
 
 <script>
@@ -45,7 +25,7 @@ export default {
       }, {
         id: '0002',
         imgurl: require('../../../img/icons/shortcut_identify.png'),
-        desc: '排行榜'
+        desc: '排行榜sssssssssssssssss谁打打ssssssssssa打法sfasfsafasfsdss'
       }, {
         id: '0003',
         imgurl: require('../../../img/icons/shortcut_local_music.png'),
@@ -71,7 +51,7 @@ export default {
         }
         pages[page].push(item)
       })
-      return pages
+      return pages//  轮播分页
     }
   }
 }
@@ -81,15 +61,16 @@ export default {
   .icons
     overflow : hidden
     height : 0
-    padding-bottom : 25%
-    border-bottom:thin solid #dde4eb
+    padding-bottom : 20%
+    /*border-bottom:thin solid #dde4eb*/
     .icon
       position :relative
       overflow : hidden
       width:25%
       height: 0
-      padding-bottom: 25%
+      padding-bottom: 20%
       float: left
+
       .icon-img
         position : absolute
         top:-.2rem
@@ -99,7 +80,6 @@ export default {
         box-sizing : border-box
         padding: .2rem
         padding-top: .3rem
-
         .icon-img-concent
           height :100%
           display block
@@ -112,5 +92,8 @@ export default {
         height:.38rem
         line-height: .30rem
         text-align: center
-        font-size :.1rem
+        overflow : hidden
+        white-space : nowrap
+        text-overflow : ellipsis
+
 </style>
