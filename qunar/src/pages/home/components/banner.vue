@@ -19,7 +19,9 @@ export default {
           el: '.swiper-pagination',
           clickable: true
         },
-        autoplay: true,
+        autoplay: {
+          disableOnInteraction: false
+        },
         loop: true
       },
       list: [{
