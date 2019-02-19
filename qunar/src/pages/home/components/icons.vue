@@ -1,14 +1,14 @@
 <template>
     <div class="icons">
-      <swiper :options="swiperOption" ref="mySwiper" >
-          <div class="swiper-slide" >
-             <div class="icon" v-for="item of iconslist" :key="item.id">
+      <swiper>
+          <swiper-slide  v-for="(page,index) of pages" :key="index">
+             <div class="icon" v-for="item of page" :key="item.id">
                <div  class= "icon-img">
                  <img  class="icon-img-concent" :src="item.imgurl">
                </div>
                <p class="icon-des">{{item.desc}}</p>
               </div>
-          </div>
+          </swiper-slide >
         </swiper>
      </div>
         <!--div class="icon">
@@ -38,43 +38,43 @@ export default {
   name: 'icons',
   data () {
     return {
-      swiperOption: {
-        el: '.swiper-pagination'
-      },
       iconslist: [{
         id: '0001',
-        imgurl: '../../../img/icons/shortcut_fm.png',
-        desc: '个性推荐1'
+        imgurl: require('../../../img/icons/shortcut_fm.png'),
+        desc: '私人FM'
       }, {
         id: '0002',
-        imgurl: '../../../img/icons/shortcut_fm.png',
-        desc: '个性推荐2'
+        imgurl: require('../../../img/icons/shortcut_identify.png'),
+        desc: '排行榜'
       }, {
         id: '0003',
-        imgurl: '../../../img/icons/shortcut_fm.png',
-        desc: '个性推荐3'
+        imgurl: require('../../../img/icons/shortcut_local_music.png'),
+        desc: '歌单'
       }, {
         id: '0004',
-        imgurl: '../../../img/icons/shortcut_fm.png',
-        desc: '个性推荐4'
+        imgurl: require('../../../img/icons/shortcut_search.png'),
+        desc: '每日推荐'
       }, {
         id: '0005',
-        imgurl: '../../../img/icons/shortcut_fm.png',
-        desc: '个性推荐8'
+        imgurl: require('../../../img/icons/shortcut_fm.png'),
+        desc: '商城'
       }]
-      // computed: {
-      //   pages () {
-      //     const pages = []
-      //     this.iconslist,forEach(item,index){
-      //       const page =Math.floor()
-      //     }
-      //   }
-      //
-      // }
+    }
+  },
+  computed: {
+    pages () {
+      const pages = []
+      this.iconslist.forEach((item, index) => {
+        const page = Math.floor(index / 4)
+        if (!pages[page]) {
+          pages[page] = []
+        }
+        pages[page].push(item)
+      })
+      return pages
     }
   }
 }
-
 </script>
 
 <style lang="stylus" scoped>
@@ -92,13 +92,14 @@ export default {
       float: left
       .icon-img
         position : absolute
-        top:0
+        top:-.2rem
         left:0
         right:0
         bottom :.23rem
         box-sizing : border-box
         padding: .2rem
-        padding-top: .1rem
+        padding-top: .3rem
+
         .icon-img-concent
           height :100%
           display block
@@ -108,7 +109,8 @@ export default {
         left: 0
         right: 0
         bottom: 0
-        height:.4rem
+        height:.38rem
         line-height: .30rem
         text-align: center
+        font-size :.1rem
 </style>
